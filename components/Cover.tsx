@@ -1,6 +1,6 @@
 export default function Cover() {
   return (
-    <section className="bg-background flex justify-center">
+    <section className="bg-cream flex justify-center">
       <div
         className="w-full min-w-[360px] max-w-[430px] h-screen flex justify-center items-center"
         style={{
@@ -13,10 +13,10 @@ export default function Cover() {
         <div
           className="flex justify-center items-center w-full aspect-9/20 bg-no-repeat bg-contain bg-center"
           style={{
-            backgroundImage: "url('/images/circle-cover.png')",
+            backgroundImage: "url('/images/circle.png')",
           }}
         >
-          <div className="text-center font-lacquer text-primary-text text-xl space-y-4">
+          <div className="text-center font-lacquer text-darkgrey text-xl space-y-4">
             <div>join us to celebrate</div>
             <div>
               <div className="font-madimi text-6xl">Lily&apos;s</div>
