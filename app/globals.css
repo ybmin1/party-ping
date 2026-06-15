@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --breakpoint-mobile: 360px;
+  --color-cream: #fcf9ea;
+  --color-mint: #badfdb;
+  --color-darkgrey: #757575;
+  --font-madimi: "Madimi One", "Maimi One Fallback";
+  --font-lacquer: "Lacquer", "Lacquer Fallback";
+}
