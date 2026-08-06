@@ -1,6 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Rsvp() {
+  const [attendance, setAttendance] = useState("yes");
+
+  const handleAttendanceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAttendance(e.target.value);
+  };
+
   return (
     <section className="bg-cream flex justify-center font-lacquer text-darkgrey">
       <div className="w-full min-w-[360px] max-w-[430px] h-screen flex flex-col justify-start items-center">
@@ -28,36 +37,18 @@ export default function Rsvp() {
           </p>
           <form className="space-y-6 text-xl">
             <div className="grid grid-cols-2 gap-4">
-              <label className="flex flex-col items-center">
+              <label className="flex flex-col items-center cursor-pointer">
                 <div className="relative w-[80px] h-[80px]">
-                  <Image
-                    src="/images/tomato-filling.png"
-                    alt="tomato-outline"
-                    width={80}
-                    height={80}
-                    className="absolute inset-0 z-0"
-                  />
-                  <Image
-                    src="/images/tomato-outline.png"
-                    alt="tomato-outline"
-                    width={80}
-                    height={80}
-                    className="absolute inset-0 z-40"
-                  />
-                </div>
-                <input type="radio" name="attendance" className="sr-only" />I
-                will
-                <br /> be attending
-              </label>
-              <label className="flex flex-col items-center">
-                <div className="relative w-[80px] h-[80px]">
-                  <Image
-                    src="/images/tomato-filling.png"
-                    alt="tomato-outline"
-                    width={80}
-                    height={80}
-                    className="absolute inset-0 z-0"
-                  />
+                  {attendance === "yes" && (
+                    <Image
+                      src="/images/tomato-filling.png"
+                      alt="tomato-filling"
+                      width={80}
+                      height={80}
+                      className="absolute inset-0 z-0"
+                    />
+                  )}
+
                   <Image
                     src="/images/tomato-outline.png"
                     alt="tomato-outline"
@@ -69,32 +60,66 @@ export default function Rsvp() {
                 <input
                   type="radio"
                   name="attendance"
-                  value="not-attend"
+                  value="yes"
                   className="sr-only"
+                  onChange={handleAttendanceChange}
+                  required
+                />
+                I will
+                <br /> be attending
+              </label>
+              <label className="flex flex-col items-center cursor-pointer">
+                <div className="relative w-[80px] h-[80px]">
+                  {attendance === "no" && (
+                    <Image
+                      src="/images/tomato-filling.png"
+                      alt="tomato-filling"
+                      width={80}
+                      height={80}
+                      className="absolute inset-0 z-0"
+                    />
+                  )}
+                  <Image
+                    src="/images/tomato-outline.png"
+                    alt="tomato-outline"
+                    width={80}
+                    height={80}
+                    className="absolute inset-0 z-40"
+                  />
+                </div>
+                <input
+                  type="radio"
+                  name="attendance"
+                  value="no"
+                  className="sr-only"
+                  onChange={handleAttendanceChange}
                 />
                 I will not
                 <br /> be attending
               </label>
             </div>
-            <label className="flex flex-col text-start gap-1">
-              contact info:
+
+            <div className="flex flex-col text-start gap-1">
               <input
                 name="name"
                 placeholder="name"
-                className="text-base border-2 border-darkgrey rounded-sm pl-1"
+                className="w-full text-base border-2 border-darkgrey rounded-sm pl-1"
+                required
               />
               <input
-                name="email"
-                placeholder="email"
-                className="text-base border-2 border-darkgrey rounded-sm pl-1"
+                name="kids"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="number of kids"
+                className="w-full text-base border-2 border-darkgrey rounded-sm pl-1"
               />
-              <input
-                name="phone"
-                placeholder="phone"
-                className="text-base border-2 border-darkgrey rounded-sm pl-1"
+              <textarea
+                name="message"
+                placeholder="message (allergy/etc)"
+                className="w-full text-base border-2 border-darkgrey rounded-sm pl-1"
               />
-            </label>
-            <button className="w-full h-12 bg-mint rounded-3xl">
+            </div>
+            <button className="w-full h-12 bg-mint rounded-3xl cursor-pinter">
               reply now
             </button>
           </form>
